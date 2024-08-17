@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<odoo>
+
+    <record id="payment_provider_form" model="ir.ui.view">
+        <field name="name">Thawani Provider Form</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+            <group name="provider_credentials" position='inside'>
+                <group name="thawani_credentials" invisible="code != 'thawani'">
+                    <field
+                        name="thawani_publishable_key"
+                        string="Publishable Key"
+                        required="code == 'thawani' and state != 'disabled'"
+                    />
+                    <field 
+                        name="thawani_api_secret_key"
+                        string="Secret API Key"
+                        required="code == 'thawani' and state != 'disabled'"
+                        password="True"
+                    />
+                    <!-- <label for="thawani_webhook_secret"/>
+                    <div class="o_row" col="2">
+                        <field name="thawani_webhook_secret" password="True"/>
+                        <button string="Generate your webhook"
+                                type="object"
+                                name="action_thawani_create_webhook"
+                                class="btn-primary"
+                                invisible="thawani_webhook_secret or not thawani_secret_key"/>
+                    </div> -->
+                </group>
+            </group>
+        </field>
+    </record>
+
+</odoo>

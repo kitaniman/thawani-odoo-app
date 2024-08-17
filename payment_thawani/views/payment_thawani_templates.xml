@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="redirect_form">
+        <form t-att-action="session_url" method="get">
+            <input type="hidden" name="key" t-att-value="key"/>
+        </form>
+    </template>
+
+</odoo>
