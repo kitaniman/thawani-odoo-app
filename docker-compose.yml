@@ -1,0 +1,20 @@
+services:
+  web:
+    image: odoo:17.0
+    depends_on:
+      - mydb
+    ports:
+      - "8069:8069"
+    environment:
+      - HOST=mydb
+      - USER=odoo
+      - PASSWORD=myodoo
+    volumes:
+      - ./config:/etc/odoo
+      - ./payment_thawani_gateway:/mnt/extra-addons/payment_thawani
+  mydb:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=myodoo
+      - POSTGRES_USER=odoo
